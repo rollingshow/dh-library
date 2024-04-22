@@ -44,6 +44,7 @@ model Book {
   TagOnBook         TagOnBook[]
   GenreOnBook       GenreOnBook[]
   BookOwnerOnBook   BookOwnerOnBook[]
+  BookMeta          BookMeta[]
 
   @@fulltext([author, title])
   @@fulltext([author, title, description])
@@ -106,4 +107,11 @@ model BookOwnerOnBook {
   endedAt     DateTime  @db.Timestamp()
 
   @@id([bookOwnerId, startedAt, endedAt])
+}
+
+model BookMeta {
+  id           Int    @id @default(autoincrement())
+  thumbnailURL String @db.VarChar(2083)
+  book         Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  bookId       Int
 }

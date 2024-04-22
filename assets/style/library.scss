@@ -1,0 +1,81 @@
+@import 'variables.scss';
+
+section.library {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 48px;
+
+    .title {
+        font-size: 2rem;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .search-field {
+        font-size: 1.5rem;
+        padding: 16px;
+
+        background-color: $input-color;
+        outline: 0px solid transparent;
+        border: 0px solid transparent;
+
+        border-radius: 12px;
+        width: 640px;
+        min-width: 320px;
+        align-self: center;
+    }
+
+    .cards-container {
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: 20px;
+        // row-gap: 20px;
+        grid-auto-rows: 1fr;
+
+        .card {
+            height: 100%;
+            height: -webkit-fill-available;
+            align-self: center;
+            background-color: gainsboro;
+            display: block;
+            border-radius: 5px;
+            overflow: hidden;
+            padding-bottom: 20px;
+
+            margin-top: 20px;
+
+
+            &>* {
+                margin: 0;
+            }
+
+            .card-title {
+                text-align: left;
+                padding: 12px 20px;
+                margin: 0;
+                font-size: 24px;
+            }
+
+            .card-author {
+                padding-left: 20px;
+            }
+
+            .card-thumbnail {
+                width: 100%;
+                aspect-ratio: 1 / 1.6;
+                object-fit: cover;
+                background-image: url('/assets/images/no-image.svg');
+                background-size: cover;
+                background-position: center center;
+                display: block;
+            }
+
+            .card-location {
+                padding: 0px 20px;
+            }
+        }
+    }
+
+
+}

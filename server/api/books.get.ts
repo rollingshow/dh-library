@@ -1,11 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
+const appConfig = useAppConfig();
 
 export default defineEventHandler(async (event) => {
     const query = getQuery(event)
 
     var page = query.page !== undefined ? Number.parseInt(query.page as string) : 0
-    var amount = query.amount !== undefined ? Number.parseInt(query.amount as string) : 10
+    var amount = query.amount !== undefined ? Number.parseInt(query.amount as string) : appConfig.searchAmountDefault
     var searchQuery = "*" + (query.search as string) + "*"
 
     if (query.search !== undefined)
