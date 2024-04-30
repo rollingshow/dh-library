@@ -18,6 +18,15 @@
                 <p class='card-author'>Автор: {{ book.author }}</p>
                 <p class='card-location'>Локация: {{ book.location.name }}</p>
                 <p class='card-description' v-if="book.description != null">Описание: {{ book.description }}</p>
+                <div v-if="book.TagOnBook.length > 0" class="card-tags-container">
+                    <span class='card-tag' v-for="tagOnBook in book.TagOnBook" :key="tagOnBook.tagId"> {{
+                        tagOnBook.tag.name }}</span>
+                </div>
+                <div v-if="book.GenreOnBook.length > 0" class="card-genres-container">
+                    <span class='card-genre' v-for="genreOnBook in book.GenreOnBook" :key="genreOnBook.genreId"> {{
+                        genreOnBook.genre.name }}</span>
+                </div>
+
             </div>
         </div>
 

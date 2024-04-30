@@ -14,7 +14,18 @@ export default defineEventHandler(async (event) => {
             skip: page * amount,
             take: amount,
             include: {
-                location: true
+                location: true,
+                TagOnBook: {
+                    include: {
+                        tag: true,
+                    }
+
+                },
+                GenreOnBook: {
+                    include: {
+                        genre: true,
+                    }
+                }
             },
             where: {
                 author: {
@@ -38,7 +49,20 @@ export default defineEventHandler(async (event) => {
             skip: page * amount,
             take: amount,
             include: {
-                location: true
+                location: true,
+                TagOnBook: {
+                    include: {
+                        tag: true,
+                    }
+                },
+                GenreOnBook: {
+                    include: {
+                        genre: true,
+                    }
+                }
+
+
+
             },
         })
 
