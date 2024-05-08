@@ -1,7 +1,3 @@
-<style>
-@import url("~/assets/style/library.scss");
-</style>
-
 <template>
     <section class="library">
         <h1 class="title">Библиотека</h1>
@@ -34,7 +30,21 @@
 </template>
 
 <script lang="js">
+import '~/assets/style/pages/library.scss'
+
+useHead({
+    title: 'Библиотека',
+    meta: [
+        { name: 'description', content: 'Поиск по книгам' }
+    ],
+})
+
+definePageMeta({ middleware: 'auth' })
+
 export default {
+    props: [
+        'auth'
+    ],
     data() {
         return {
             searchConfig: {
@@ -47,6 +57,7 @@ export default {
         };
     },
     methods: {
+
         async searchBooks() {
             var searchRequest = {}
 
