@@ -1,7 +1,45 @@
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-
     modules: ['@sidebase/nuxt-auth'],
+    vue: {
+        config: {
+            devtools: false
+        }
+    },
+    vite: {
+        optimizeDeps: {
+            include: [
+                "@unhead/vue"
+            ]
+        },
+        // inspect: false,
+        // resolve: {
+        //     preserveSymlinks: false,
+        // },
+        // build: {
+        //     resolve: {
+        //         dedupe: ['vue'],
+        //     },
+        //     rollupOptions: {
+        //         external: ['vue'],
+        //         resolve: {
+        //             dedupe: ['vue'],
+        //         },
+        //         output: {
+        //             globals: {
+        //                 vue: 'Vue',
+        //             },
+        //         },
+        //     }
+        // },
+        // server: {
+        //     fs: {
+        //         // Allow serving files from one level up to the project root
+        //         allow: ['..'],
+        //     },
+        // },
+    },
     app: {
         head: {
             link: [
@@ -22,6 +60,10 @@ export default defineNuxtConfig({
     devServer: {
         port: 8000
     },
+    server: {
+        port: 80,
+    },
+    ssr: false,
     // devtools: { enabled: false },
     css: [
         '~/assets/style/global.scss',
@@ -32,12 +74,4 @@ export default defineNuxtConfig({
             clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
         }
     },
-    vite: {
-        server: {
-            fs: {
-                // Allow serving files from one level up to the project root
-                allow: ['..'],
-            },
-        },
-    }
 })

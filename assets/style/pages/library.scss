@@ -114,5 +114,38 @@ section.library {
         }
     }
 
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+
+        button {
+            display: inline-block;
+            background-color: $background-accent;
+            color: $text-main;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            font-size: 1rem;
+            font-family: inherit;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 1s cubic-bezier(0.23, 1, 0.320, 1), color 1s cubic-bezier(0.23, 1, 0.320, 1), opacity 1s cubic-bezier(0.23, 1, 0.320, 1),
+                border 1s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+            margin: 0 10px;
+
+            &:hover {
+                background-color: #EAEAEAff;
+                color: $text-sub;
+            }
+
+            &:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+        }
+    }
 
 }

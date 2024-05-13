@@ -1,12 +1,11 @@
 <template>
     <section class="library">
         <h1 class="title">Библиотека</h1>
-        <input class="search-field" v-model="searchQuery" @input="searchBooks"
+        <input class="search-field" v-model="searchQuery" @input="refreshBooks"
             placeholder="Введите название или автора книги">
 
         <div class='cards-container'>
             <div class='card' v-for="book in searchResults.books" :key="book.id">
-                <!-- <img class="card-thumbnail" :src="'https://covers.openlibrary.org/b/isbn/' + book.ISBN + '-L.jpg'"> -->
                 <img class="card-thumbnail" :src="'https://pictures.abebooks.com/isbn/' + book.ISBN + '.jpg'"
                     onerror="this.src='/images/no-image.svg'">
 
@@ -24,6 +23,14 @@
                 </div>
 
             </div>
+        </div>
+
+        <!-- Pagination based on searchConfig.page and searchConfig.amount -->
+        <div class="pagination">
+            <button class="prev" @click="searchConfig.page--" :disabled="searchConfig.page == 0">Предыдущая</button>
+            <!-- Страница --> {{ searchConfig.page + 1 }} <!-- из --> {{ searchResults.pages }}
+            <button class="next" @click="searchConfig.page++"
+                :disabled="false/*searchResults.books.length < searchConfig.amount*/">Следующая</button>
         </div>
 
     </section>
@@ -45,6 +52,17 @@ export default {
     props: [
         'auth'
     ],
+    watch: {
+        'searchConfig.page': function (newPage) {
+            this.refreshBooks()
+        },
+        'searchConfig.amount': function (newAmount) {
+            this.refreshBooks()
+        },
+        'searchConfig.sortBy': function (newSortBy) {
+            this.refreshBooks()
+        },
+    },
     data() {
         return {
             searchConfig: {
@@ -57,8 +75,7 @@ export default {
         };
     },
     methods: {
-
-        async searchBooks() {
+        async refreshBooks() {
             var searchRequest = {}
 
             if (this.searchConfig.page != 0)
@@ -72,7 +89,7 @@ export default {
                     searchRequest.sortBy = this.searchConfig.sortBy
 
             try {
-                const books = await $fetch('/api/books', {
+                const books = await $fetch('/api/database/books', {
                     method: 'GET',
                     query: searchRequest
                 })

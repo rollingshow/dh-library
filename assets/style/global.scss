@@ -7,12 +7,24 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css');
 
 body {
+    position: relative;
+    min-height: 100dvh;
+    min-width: 100dvw;
+
+    margin: 0px;
+    padding: 100px 20px;
+    box-sizing: border-box;
+
     font-size: 16px;
     font-family: Onest, "SF Pro", Roboto, Arial, Helvetica, sans-serif;
-    margin: 0px;
-    color: $text-main;
 
+    color: $text-main;
     background-color: $background-main;
+
+    #__nuxt {
+        min-width: 100%;
+        min-height: 100%;
+    }
 }
 
 .btn {

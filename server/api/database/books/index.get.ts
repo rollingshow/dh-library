@@ -60,9 +60,6 @@ export default defineEventHandler(async (event) => {
                         genre: true,
                     }
                 }
-
-
-
             },
         })
 

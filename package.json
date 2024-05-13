@@ -1,33 +1,34 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev --port 8000",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "dependencies": {
-    "@prisma/client": "^5.12.1",
-    "nuxt": "^3.11.2",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
-  },
-  "devDependencies": {
-    "@sidebase/nuxt-auth": "^0.6.7",
-    "@types/node": "^20.12.7",
-    "next-auth": "^4.22.5",
-    "prisma": "^5.12.1",
-    "sass": "^1.75.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
-  },
-  "description": "Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.",
-  "version": "1.0.0",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "nuxt-app",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "nuxt build",
+        "dev": "nuxt dev --port 8000",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare"
+    },
+    "dependencies": {
+        "@prisma/client": "^5.13.0",
+        "vue-router": "^4.3.2"
+    },
+    "devDependencies": {
+        "@sidebase/nuxt-auth": "^0.6.2",
+        "@types/node": "^20.12.11",
+        "next-auth": "4.21.1",
+        "nuxt": "^3.11.2",
+        "prisma": "^5.13.0",
+        "sass": "^1.77.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5",
+        "vite-plugin-vue-inspector": "^5.1.0",
+        "vue": "^3.4.27"
+    },
+    "description": "Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.",
+    "version": "1.0.0",
+    "main": "index.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
