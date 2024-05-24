@@ -9,21 +9,23 @@
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare"
     },
+    "prisma": {
+        "seed": "node prisma/seed.ts"
+    },
     "dependencies": {
-        "@prisma/client": "^5.13.0",
-        "vue-router": "^4.3.2"
+        "@prisma/client": "^5.14.0",
+        "next-auth": "4.21.1",
+        "vue": "^3.4.27",
+        "vue-multiselect": "^3.0.0"
     },
     "devDependencies": {
-        "@sidebase/nuxt-auth": "^0.6.2",
-        "@types/node": "^20.12.11",
-        "next-auth": "4.21.1",
+        "@sidebase/nuxt-auth": "^0.6.7",
+        "@types/node": "^20.12.12",
         "nuxt": "^3.11.2",
-        "prisma": "^5.13.0",
-        "sass": "^1.77.1",
-        "ts-node": "^10.9.2",
+        "prisma": "^5.14.0",
+        "sass": "^1.77.2",
         "typescript": "^5.4.5",
-        "vite-plugin-vue-inspector": "^5.1.0",
-        "vue": "^3.4.27"
+        "vue-router": "^4.3.0"
     },
     "description": "Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.",
     "version": "1.0.0",

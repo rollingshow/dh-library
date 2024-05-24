@@ -12,7 +12,6 @@ body {
     min-width: 100dvw;
 
     margin: 0px;
-    padding: 100px 20px;
     box-sizing: border-box;
 
     font-size: 16px;
@@ -22,8 +21,7 @@ body {
     background-color: $background-main;
 
     #__nuxt {
-        min-width: 100%;
-        min-height: 100%;
+        padding: 100px 20px;
     }
 }
 
@@ -84,6 +82,319 @@ body {
             border: 1px solid $background-main;
             color: $text-sub;
         }
+    }
+
+    &.success {
+        background-color: #79c2a1;
+    }
+
+    &.fail {
+        background-color: #ce8484;
+    }
+
+    &.disabled,
+    :disabled {
+        background-color: #bbbbbb;
+        color: gray;
+    }
+}
+
+
+.field {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0.5rem 1.25rem;
+
+    background-color: white;
+
+    border: 1px solid $background-accent;
+    border-radius: 0.5rem;
+
+    &:hover {
+        border: 1px solid $background-main;
+    }
+
+    input {
+        border: none;
+        border-radius: 0.5rem;
+        background-color: white;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.multiselect {
+    position: relative;
+    display: block;
+    text-align: left;
+    color: #35495e;
+    box-sizing: border-box;
+
+    min-width: 4rem;
+    min-height: 3rem;
+
+
+    background-color: white;
+
+    border: 1px solid $background-accent;
+    border-radius: 0.5rem;
+
+    &--active {
+        .multiselect__input {
+            display: inline-block;
+        }
+    }
+
+
+    &__tags {
+        padding: 0.5rem 0.5rem;
+        min-height: 30px;
+
+        .multiselect__input {
+            padding: 0.25rem 0.5rem;
+            margin-top: 8px;
+            font-size: 1rem;
+            outline: none;
+            user-select: none;
+            font-family: inherit;
+
+            width: 100%;
+        }
+
+        &-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+
+        }
+    }
+
+    &__input,
+    &__single {
+        position: relative;
+        display: inline-block;
+        min-height: 20px;
+        line-height: 20px;
+        border: none;
+        border-radius: 5px;
+        background: #fff;
+
+        width: 100%;
+        transition: border 0.1s ease;
+        box-sizing: border-box;
+        margin-bottom: 8px;
+        vertical-align: top;
+    }
+
+    &__input::placeholder {
+        color: #35495e;
+    }
+
+    &__tag {
+        position: relative;
+        display: inline-flex;
+        padding: 4px 26px 4px 10px;
+        border-radius: 5px;
+        color: $text-main;
+        line-height: 1;
+        background: $background-accent;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__tag-icon {
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        font-weight: 700;
+        font-style: initial;
+        width: 22px;
+        text-align: center;
+        line-height: 22px;
+        transition: all 0.2s ease;
+        border-radius: 5px;
+    }
+
+    &__tag-icon:after {
+        content: "×";
+        color: #266d4d;
+        font-size: 14px;
+    }
+
+    &__tag-icon:focus:after,
+    &__tag-icon:hover:after {
+        color: $text-main;
+    }
+
+    &__select {
+        line-height: 16px;
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        width: 40px;
+        height: 38px;
+        right: 1px;
+        top: 1px;
+        padding: 4px 8px;
+        margin: 0;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    &__select:before {
+        position: relative;
+        right: 0;
+        top: 65%;
+        color: #999;
+        margin-top: 4px;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: #999 transparent transparent transparent;
+        content: "";
+    }
+
+    &__content-wrapper {
+        position: absolute;
+        display: block;
+        background: #fff;
+        width: 100%;
+        max-height: 240px;
+        overflow: auto;
+        border: 1px solid #e8e8e8;
+        border-top: none;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        z-index: 50;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    &__content {
+        list-style: none;
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        min-width: 100%;
+        vertical-align: top;
+    }
+
+    &__element {
+        display: block;
+    }
+
+    &__option {
+        display: block;
+        padding: 12px;
+        min-height: 40px;
+        line-height: 16px;
+        text-decoration: none;
+        text-transform: none;
+        vertical-align: middle;
+        position: relative;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    &__option:after {
+        top: 0;
+        right: 0;
+        position: absolute;
+        line-height: 40px;
+        padding-right: 12px;
+        padding-left: 20px;
+        font-size: 13px;
+    }
+
+    &__option--highlight {
+        background: $background-accent;
+        outline: none;
+        color: $text-main;
+    }
+
+    &__option--highlight:after {
+        content: attr(data-select);
+        background: $background-accent;
+        color: $text-main;
+    }
+
+    &__option--selected {
+        background: #f3f3f3;
+        color: #35495e;
+        font-weight: 700;
+    }
+
+    &__option--selected:after {
+        content: attr(data-selected);
+        color: silver;
+        background: inherit;
+    }
+
+    &__option--selected.multiselect__option--highlight {
+        background: #ff6a6a;
+        color: $text-main;
+    }
+
+    &__option--selected.multiselect__option--highlight:after {
+        background: #ff6a6a;
+        content: attr(data-deselect);
+        color: $text-main;
+    }
+
+    &--disabled {
+        background: #ededed;
+        color: #a6a6a6;
+    }
+
+    &--disabled .multiselect__current,
+    &--disabled .multiselect__select {
+        background: #ededed;
+        color: #a6a6a6;
+    }
+
+    &__option--group {
+        background: #ededed;
+        color: #35495e;
+    }
+
+    &__option--group.multiselect__option--highlight {
+        background: #35495e;
+        color: $text-main;
+    }
+
+    &__option--group.multiselect__option--highlight:after {
+        background: #35495e;
+    }
+
+    &__option--disabled.multiselect__option--highlight {
+        background: #dedede;
+    }
+
+    &__option--group-selected.multiselect__option--highlight {
+        background: #ff6a6a;
+        color: $text-main;
+    }
+
+    &__option--group-selected.multiselect__option--highlight:after {
+        background: #ff6a6a;
+        content: attr(data-deselect);
+        color: $text-main;
+    }
+
+    &-enter-active,
+    &-leave-active {
+        transition: all 0.15s ease;
+    }
+
+    &-enter,
+    &-leave-active {
+        opacity: 0;
     }
 }
 

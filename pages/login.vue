@@ -1,11 +1,7 @@
-<script setup lang="ts">
-import type { RouteLocationRaw } from 'vue-router';
-import('~/assets/style/pages/auth.scss')
-</script>
-
 <template>
     <div class="auth-wrapper">
         <div class="auth-form">
+            <!-- Форма авторизации -->
             <ClientOnly>
                 <div class="form-head">
                     <button class="btn icon style-border" @click="$router.back()">
@@ -31,20 +27,27 @@ import('~/assets/style/pages/auth.scss')
 </template>
 
 <script lang="ts">
+import '~/assets/style/pages/auth.scss'
+
 definePageMeta({
     // layout: false
 })
 
 export default {
     mounted() {
+        // Получение данных
         this.auth = this.readAuthData()
 
+        // Получаем обратную ссылку
         if (this.$route.query.callbackUrl != null && this.$route.query.callbackUrl != undefined)
             this.callback = this.$route.query.callbackUrl
 
+        // Если пользователь уже авторизован
         if (this.auth.status == 'authenticated') {
+            // Возвращаемся на предыдущую страницу
             if (this.$route.query.callbackUrl != null && this.$route.query.callbackUrl != undefined)
                 navigateTo(this.$route.query.callbackUrl)
+            // Возвращаемся на главную, если нет ссылки
             else
                 navigateTo('/')
         }
@@ -59,7 +62,7 @@ export default {
     },
     //методы приложения
     methods: {
-        //метод получения данных пользователя
+        // Метод получения данных пользователя
         readAuthData() {
             let result = useAuth()
             return result

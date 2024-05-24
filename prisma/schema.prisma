@@ -115,3 +115,6 @@ model BookMeta {
     book         Book    @relation(fields: [bookId], references: [id], onDelete: Cascade)
     bookId       Int
 }
+
+
+

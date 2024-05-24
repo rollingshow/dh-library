@@ -2,8 +2,9 @@ import { Prisma, PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+// Выборка местоположений
 export default defineEventHandler(async (event) => {
-    const genres = await prisma.genre.findMany()
-    return genres
+    const locations = await prisma.location.findMany()
+    return locations
 
 })

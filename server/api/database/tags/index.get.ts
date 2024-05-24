@@ -1,8 +1,9 @@
 import { Prisma, PrismaClient } from '@prisma/client'
-
 const prisma = new PrismaClient()
 
+// Выборка тегов
 export default defineEventHandler(async (event) => {
-    const genres = await prisma.genre.findMany()
-    return genres
+    const tags = await prisma.tag.findMany()
+    return tags
 })
+

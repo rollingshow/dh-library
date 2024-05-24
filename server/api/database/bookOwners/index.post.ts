@@ -2,7 +2,7 @@ import { Prisma, PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-
+// Создание нового владельца
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
     const { name, phoneNumber, telegram, studentDoc } = body

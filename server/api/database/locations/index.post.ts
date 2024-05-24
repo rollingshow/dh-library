@@ -2,6 +2,7 @@ import { Prisma, PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+// Создание нового местоположения
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
     const { name } = body

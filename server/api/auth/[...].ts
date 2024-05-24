@@ -5,13 +5,16 @@ const runtimeConfig = useRuntimeConfig()
 
 export default NuxtAuthHandler({
     secret: process.env.AUTH_SECRET,
+    // Основные страницы авторизации
     pages: {
         signIn: '/login',
         signOut: '/logout',
     },
+    // Конфигурация сессии
     session: {
         strategy: "jwt",
     },
+    // Провайдеры аутентификации
     providers: [
         // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
         GoogleProvider.default({
@@ -19,6 +22,7 @@ export default NuxtAuthHandler({
             clientSecret: runtimeConfig.GoogleOAuth.clientSecret,
         })
     ],
+    // Обрботка колбеков
     callbacks: {
         async jwt({ token, account, user }) {
             if (account) {

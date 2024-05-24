@@ -2,7 +2,8 @@ import { Prisma, PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+// Выборка типов книг
 export default defineEventHandler(async (event) => {
-    const bookOwners = await prisma.bookOwner.findMany()
-    return bookOwners
+    const bookTypes = await prisma.bookType.findMany()
+    return bookTypes
 })
